@@ -3,3 +3,11 @@ y con eso hacer algo similar a lo de la tarea 2, ahí no se como te tinca para h
 uno a cada lado y conseguirnos ojala un csv que tenga esas mediciones para el humano promedio, para con eso hacer las imagenes 
 al x1 y de ahí hacer una escala con los datos de los jugadores que se eligan, pensab usar tamaño de mano, maximo salto vertical, 
 envergadura(puede ser proporcion a altura), reach standing, body fat pctg y bench reps
+
+Altura. Envergadura, el tamño de la mano
+
+fuerza
+
+max vertical, standing, vertical
+
+body fat,
