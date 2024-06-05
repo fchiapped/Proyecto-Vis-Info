@@ -28,6 +28,7 @@
         </div>
     </div>
 
+    </div>
         <div class="divLine"></div>
         <h2>Visualización 2 - Comparación Capacidades Físicas</h2>
         <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
@@ -47,6 +48,55 @@
             <!-- Aquí se mostrará la visualización -->
         </div>
     </div>
+
+    </div>
+        <div class="divLine"></div>
+        <h2>Visualización 3 - IMC NBACombine VS Mundo</h2>
+        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
+            vs una persona promedio de la población general en base al Indice de Masa Corporal(IMC)</p>
+
+        <div>
+            <h4>Seleccione un país</h4>
+            <select id="country-selector">
+                <option value="">Mundo</option>
+            </select>
+            <p id="imc-hombres"></p>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Papa.parse('IMC.csv', {
+                    download: true,
+                    header: true,
+                    complete: function(results) {
+                        const countries = results.data;
+                        const selector = document.getElementById('country-selector');
+                        const imcHombresDisplay = document.getElementById('imc-hombres');
+
+                        countries.forEach(country => {
+                            const option = document.createElement('option');
+                            option.value = country.pais;
+                            option.textContent = country.pais;
+                            option.setAttribute('data-imc-hombres', country.IMC_hombres);
+                            selector.appendChild(option);
+                        });
+
+                        selector.addEventListener('change', function() {
+                            const selectedOption = selector.options[selector.selectedIndex];
+                            const imcHombres = selectedOption.getAttribute('data-imc-hombres');
+                            imcHombresDisplay.textContent = imcHombres ? `IMC de hombres: ${imcHombres}` : '';
+                        });
+                    }
+                });
+            });
+        </script>
+
+        </div>
+        <div id="vis-3">
+            <!-- Aquí se mostrará la visualización -->
+        </div>
+    </div>
+
 
 
     <div class="divLine"></div>

@@ -11,8 +11,8 @@ const HEIGHT_VIS_1 = 350;
 const WIDTH_VIS_2 = 1000;
 const HEIGHT_VIS_2 = 400;
 
-const WIDTH_VIS_3 = 100;
-const HEIGHT_VIS_3 = 400;
+const WIDTH_VIS_3 = 500;
+const HEIGHT_VIS_3 = 300;
 
 SVG1.attr("width", WIDTH_VIS_1).attr("height", HEIGHT_VIS_1);
 SVG2.attr("width", WIDTH_VIS_2).attr("height", HEIGHT_VIS_2);
@@ -118,7 +118,6 @@ function vis1() {
 
 }
 
-
 function vis2() {
     SVG2.append("rect")
     .attr("x", 0)
@@ -147,9 +146,20 @@ function vis2() {
     .attr("stroke-width", 3);
 }
     
+function vis3() {
 
+    SVG3.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", WIDTH_VIS_3)
+    .attr("height", HEIGHT_VIS_3)
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("stroke-width", 5);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     vis1();
     vis2();
+    vis3();
 });
