@@ -22,67 +22,34 @@
         </div>
         <ul id="legend" class="legend textStart">
             <li id="legend-content">
-                <!-- Contenido de la leyenda se actualizará aquí -->
             </li>
         </ul>
         <div id="vis-1">
-            <!-- Aquí se mostrará la visualización -->
         </div>
     </div>
 
         <div class="divLine"></div>
-        <h2>Visualización 2 - Personajes de las series</h2>
-        <p>Esta visualización solo se verá después de seleccionar una serie en la visualización 1 o
-            desde los siguientes botones</p>
-        <div>
-            <h5>1. Selecionar serie</h5>
-            <button id="DragonBall">Dragon Ball</button>
-            <button id="DragonBallZ">Dragon Ball Z</button>
-            <button id="DragonBallGT">Dragon Ball GT</button>
-        </div>
-        <div>
-            <h5>2. Filtrar personajes</h5>
-            <button id="filter-button">Quienes aumentan su poder más de 10 veces</button>
-            <button id="filter-reset">Resetear filtro</button>
-        </div>
-        <div>
-            <h5>3. Ordenar por</h5>
-            <select id="order-by">
-                <option value="height">Altura</option>
-                <option value="wingspan">Envergadura</option>
-                <option value="widthHandInches">Tamaño Mano</option>
-            </select>
+        <h2>Visualización 2 - Comparación Capacidades Físicas</h2>
+        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
+            vs una persona promedio de la población general. Se puede comparar el salto vertical estatico, el salto
+            vertical máximo y las repeticiones en press de banca con 185 lbs(84Kg).</p>
 
+        <p> Aquí pensaba si podemos animar, tipo que la que se seleccione se mueva, onda una imagen del benchpres 
+            y que la de la barra sea aparte, para poder moverlo y así, con los salto usar png y hacer un suelo, pa solo mover el pngs
+        </p>
+        <div>
+            <h4>Selecionar Prueba Física</h4>
+            <button id="BenchPress">Bench Press</button>
+            <button id="StandingVert">Standing Vert</button>
+            <button id="MaxVert">Max Vert</button>
         </div>
-        <ul class="legend textStart">
-            <li>
-                Cada persona representa un personaje.
-            </li>
-            <li>
-                El color de la cabeza indica en cuál serie aparece por primera vez, mientras que el color del cuerpo
-                indica en cuál serie es más recurrente el personaje. Por consistencia, los colores de cada serie serán
-                los mismos que los utilizados en la visualización 1.
-            </li>
-            <li>
-                El largo del cuerpo codifica el poder promedio del persona.
-                Aquí se utiliza una escala logaritmica dada las grandes diferentes de valores.
-            </li>
-            <li>
-                El color del cuerpo representa la cantidad de aventuras en las que participó el personaje.
-                Se utiliza una escala divergente "Purpura-blanco-Verde" [d3.interpolatePRGn] donde el blanco (valor
-                intermedio) representa el valor del medio de aventuras entre los personajes en pantalla (la mediana).
-                Mientras más púrpura es el color, menos aventuras participó el personaje. En cambio,
-                mientras más verde es, en más aventuras participó.
-            </li>
-            <li>
-                El largo del brazo codifica el poder mínimo que tuve el personaje. Mietras más largo sea el brazo,
-                implica que su poder mínimo fue más alto.
-            </li>
-        </ul>
         <div id="vis-2">
-            <h4 id="selected"></h4>
+            <!-- Aquí se mostrará la visualización -->
         </div>
     </div>
+
+
+    <div class="divLine"></div>
     <script src="main.js"></script>
 </body>
 

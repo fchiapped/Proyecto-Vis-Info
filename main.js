@@ -84,7 +84,6 @@ function vis1() {
         altura();
     }
 
-    // Función para actualizar la visualización
     function updateVisualization(type) {
         updateLegend(type);
         switch (type) {
@@ -119,6 +118,38 @@ function vis1() {
 
 }
 
+
+function vis2() {
+    SVG2.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", WIDTH_VIS_2)
+    .attr("height", HEIGHT_VIS_2)
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("stroke-width", 5);
+
+
+    SVG2.append("line")
+    .attr("x1", WIDTH_VIS_2 / 3)
+    .attr("y1", 0)
+    .attr("x2", WIDTH_VIS_2 / 3)
+    .attr("y2", HEIGHT_VIS_2)
+    .attr("stroke", "black")
+    .attr("stroke-width", 3);
+
+    SVG2.append("line")
+    .attr("x1", (WIDTH_VIS_2 / 3) * 2)
+    .attr("y1", 0)
+    .attr("x2", (WIDTH_VIS_2 / 3) * 2)
+    .attr("y2", HEIGHT_VIS_2)
+    .attr("stroke", "black")
+    .attr("stroke-width", 3);
+}
+    
+
+
 document.addEventListener('DOMContentLoaded', function() {
     vis1();
+    vis2();
 });
