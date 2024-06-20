@@ -1,4 +1,4 @@
-pais,Media_Imc,IMC_hombres,Imc_mujeres
+País,IMC_Global,IMC_Hombres,IMC_Mujeres
 Afganistán,21.01,21.36,20.65
 Albania,24.53,27.6,21.45
 Argelia,23.87,24.38,23.36
@@ -6,11 +6,11 @@ Angola,22.73,23.24,22.22
 Argentina,26.44,27.76,25.11
 Armenia,24.26,25.72,22.8
 Australia,26.1,27.24,24.95
-Austria,25.0,26.97,23.03
+Austria,25,26.97,23.03
 Azerbaiyán,24.65,26.21,23.08
 Bahamas,27.09,27.6,26.57
 Baréin,26.33,27.97,24.69
-Bangladés,20.32,21.0,19.63
+Bangladés,20.32,21,19.63
 Barbados,27.7,26.84,28.55
 Bielorrusia,26.72,26.32,27.11
 Bélgica,24.15,25.93,22.36
@@ -38,7 +38,7 @@ Comoras,22.99,23.39,22.59
 Congo,21.91,22.3,21.52
 Costa Rica,24.87,26.06,23.68
 Costa de Marfil,22.03,21.64,22.42
-Croacia,26.61,30.21,23.0
+Croacia,26.61,30.21,23
 Cuba,25.64,26.78,24.49
 Chipre,26.7,27.21,26.18
 República Checa,23.78,26.5,21.06
@@ -67,7 +67,7 @@ Grecia,26.13,27.68,24.57
 Granada,26.43,26.94,25.91
 Guatemala,25.88,26.42,25.34
 Guinea,22.06,22.41,21.71
-Guinea-Bisáu,21.04,21.0,20.53
+Guinea-Bisáu,21.04,21,20.53
 Guyana,25.1,25.61,24.59
 Haití,23.12,22.21,24.03
 Honduras,25.12,25.63,24.61
@@ -91,7 +91,7 @@ Laos,21.99,22.5,21.48
 Letonia,23.73,25.38,22.07
 Líbano,24.57,26.6,22.54
 Lesoto,24.56,22.96,26.16
-Liberia,21.0,21.51,20.49
+Liberia,21,21.51,20.49
 Libia,26.06,26.57,25.55
 Lituania,24.29,26.44,22.14
 Luxemburgo,25.06,25.6,24.51
@@ -111,7 +111,7 @@ Mongolia,25.94,24.78,27.1
 Marruecos,23.76,23.71,23.8
 Mozambique,21.27,21.27,21.27
 Myanmar (Birmania),22.4,22.91,21.89
-Namibia,22.0,22.01,21.99
+Namibia,22,22.01,21.99
 Nepal,20.55,20.82,20.27
 Países Bajos,24.14,25.72,22.56
 Nueva Zelanda,26.61,27.55,25.67
@@ -153,7 +153,7 @@ Surinán,25.71,26.22,25.2
 Suazilandia,23.39,23.9,22.88
 Suecia,24.54,26.11,22.97
 Suiza,24.94,25.47,24.4
-Siria,25.0,25.51,24.49
+Siria,25,25.51,24.49
 Tayikistán,25.21,25.72,24.7
 Tanzania,21.83,21.87,21.78
 Tailandia,22.34,23.36,21.32
@@ -167,7 +167,7 @@ Uganda,21.53,21.03,22.02
 Ucrania,23.34,24.84,21.84
 Emiratos Árabes Unidos,26.66,27.6,25.71
 Reino Unido,26.19,27.62,24.76
-Estados Unidos,27.82,28.64,27.0
+Estados Unidos,27.82,28.64,27
 Uruguay,25.06,26.88,23.24
 Uzbekistán,23.8,24.99,22.6
 Vanuatu,25.53,26.46,24.6

@@ -58,7 +58,6 @@
         <div>
             <h4>Seleccione un país</h4>
             <select id="country-selector">
-                <option value=""></option>
             </select>
             <p id="imc-hombres"></p>
 
@@ -75,9 +74,9 @@
 
                         countries.forEach(country => {
                             const option = document.createElement('option');
-                            option.value = country.pais;
-                            option.textContent = country.pais;
-                            option.setAttribute('data-imc-hombres', country.IMC_hombres);
+                            option.value = country.País;
+                            option.textContent = country.País;
+                            option.setAttribute('data-imc-hombres', country.IMC_Hombres);
                             selector.appendChild(option);
                         });
 
