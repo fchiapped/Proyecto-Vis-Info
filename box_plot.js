@@ -442,10 +442,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(wingspanButton);
 });
 
-document.getElementById('height-button').addEventListener('click', function() {
+document.getElementById('alturaButton').addEventListener('click', function() {
+    console.log("alo")
     updateVisualization('height');
 });
 
-document.getElementById('wingspan-button').addEventListener('click', function() {
+document.getElementById('wingspanButton').addEventListener('click', function() {
     updateVisualization('wingspan');
 });

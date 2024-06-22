@@ -160,7 +160,5 @@ function vis3() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    vis1();
-    vis2();
-    vis3();
+
 });
