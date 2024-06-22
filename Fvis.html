@@ -7,24 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="box_plot.js"></script>
     <title>NBA Combine</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Comparaciones NBA Combine</h1>
-        <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
-        <div>
-            <h4>1. Seleccionar característica a comparar</h4>
-            <button id="height">Altura</button>
-            <button id="wingspan">Envergadura</button>
-            <button id="widthHandInches">Tamaño Mano</button>
+        <h2>Visualización 1 - Altura y Envergadura por posición</h2>
+        <div id="buttons-container">
+            <button id="alturaButton">Altura</button>
+            <button id="wingspanButton">Envergadura</button>
         </div>
-        <ul id="legend" class="legend textStart">
-            <li id="legend-content">
-            </li>
-        </ul>
-        <div id="vis-1">
+        <div id="vis-3">
+        </div>
+
         </div>
     </div>
 
@@ -44,7 +41,6 @@
             <button id="StandingVert">Standing Vert</button>
             <button id="MaxVert">Max Vert</button>
         </div>
-        <div id="vis-2">
             <!-- Aquí se mostrará la visualización -->
         </div>
     </div>
@@ -91,7 +87,6 @@
         </script>
 
         </div>
-        <div id="vis-3">
             <!-- Aquí se mostrará la visualización -->
         </div>
     </div>

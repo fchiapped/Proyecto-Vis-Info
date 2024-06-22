@@ -5,14 +5,15 @@ const SVG2 = d3.select("#vis-2").append("svg");
 const SVG3 = d3.select("#vis-3").append("svg");
 
 // Editar tamaños como estime conveniente
-const WIDTH_VIS_1 = 800;
-const HEIGHT_VIS_1 = 350;
+
+const WIDTH_VIS_1 = 1000;
+const HEIGHT_VIS_1 = 400;
 
 const WIDTH_VIS_2 = 1000;
 const HEIGHT_VIS_2 = 400;
 
-const WIDTH_VIS_3 = 500;
-const HEIGHT_VIS_3 = 300;
+const WIDTH_VIS_3 = 1000;
+const HEIGHT_VIS_3 = 400;
 
 SVG1.attr("width", WIDTH_VIS_1).attr("height", HEIGHT_VIS_1);
 SVG2.attr("width", WIDTH_VIS_2).attr("height", HEIGHT_VIS_2);
