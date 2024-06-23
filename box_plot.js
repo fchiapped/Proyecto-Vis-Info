@@ -1,10 +1,11 @@
 const WIDHT = 1000;
 const HEIGHT = 400;
 MARGIN = 50;
+TOP_MARGIN = 10;
 
 function drawBoxPlot(dataKey, svg) {
     return d3.csv("DraftCombine.csv").then(function(data) {        
-        const margin = { top: MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN };
+        const margin = { top: TOP_MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN };
         const width = WIDHT - margin.left - margin.right;
         const height = HEIGHT - margin.top - margin.bottom;
 
@@ -228,22 +229,34 @@ function renderSelectedSVG(selectedSVG, opacity) {
 document.addEventListener('DOMContentLoaded', function() {
     const alturaButton = document.getElementById('alturaButton');
     const wingspanButton = document.getElementById('wingspanButton');
+    const alturavsenvergadura = document.getElementById('AlturavsEnvergadura');
+    const envergaduravsaltura = document.getElementById('EnvergaduravsAltura');
 
     alturaButton.addEventListener('click', function() {
         renderSelectedSVG(alturaSVG, 1);
-        d3.select(wingspanSVG).style("opacity", 0.2);
+        d3.select(wingspanSVG).style("opacity", 0);
     });
 
     wingspanButton.addEventListener('click', function() {
         renderSelectedSVG(wingspanSVG, 1);
+        d3.select(alturaSVG).style("opacity", 0);
+    });
+
+    alturavsenvergadura.addEventListener('click', function() {
+        renderSelectedSVG(alturaSVG, 1);
+        d3.select(wingspanSVG).style("opacity", 0.2);
+    });
+
+    envergaduravsaltura.addEventListener('click', function() {
+        renderSelectedSVG(wingspanSVG, 1);
         d3.select(alturaSVG).style("opacity", 0.2);
     });
+
 
     Promise.all([altura(), wingspan()]).then(function([svg1, svg2]) {
         alturaSVG = svg1;
         wingspanSVG = svg2;
 
         renderSelectedSVG(alturaSVG, 1);
-        d3.select(wingspanSVG).style("opacity", 0.2);
     });
 });

@@ -14,36 +14,46 @@
 <body>
     <div class="container">
         <h1>Comparaciones NBA Combine</h1>
-        <h2>Visualización 1 - Altura y Envergadura por posición</h2>
+        <h2 id="Title">Visualización 1 - Altura y Envergadura por posición</h2>
         <div id="buttons-container">
             <button id="alturaButton">Altura</button>
             <button id="wingspanButton">Envergadura</button>
+            <button id="AlturavsEnvergadura">Altura v/s Envergadura</button>
+            <button id="EnvergaduravsAltura">Envergadura v/s Altura</button>
         </div>
+        <h2 id="visTitle">Altura por posición</h2>
         <div id="vis-3">
         </div>
-
         </div>
-    </div>
 
-    </div>
-        <div class="divLine"></div>
-        <h2>Visualización 2 - Comparación Capacidades Físicas</h2>
-        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
-            vs una persona promedio de la población general. Se puede comparar el salto vertical estatico, el salto
-            vertical máximo y las repeticiones en press de banca con 185 lbs(84Kg).</p>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alturaButton = document.getElementById('alturaButton');
+            const wingspanButton = document.getElementById('wingspanButton');
+            const AlturavsEnvergaduraButton = document.getElementById('AlturavsEnvergadura');
+            const EnvergaduravsAlturaButton = document.getElementById('EnvergaduravsAltura');
+            const visTitle = document.getElementById('visTitle');
 
-        <p> Aquí pensaba si podemos animar, tipo que la que se seleccione se mueva, onda una imagen del benchpres 
-            y que la de la barra sea aparte, para poder moverlo y así, con los salto usar png y hacer un suelo, pa solo mover el pngs
-        </p>
-        <div>
-            <h4>Selecionar Prueba Física</h4>
-            <button id="BenchPress">Bench Press</button>
-            <button id="StandingVert">Standing Vert</button>
-            <button id="MaxVert">Max Vert</button>
+            alturaButton.addEventListener('click', function () {
+            visTitle.textContent = 'Altura por posición';
+            });
+
+            wingspanButton.addEventListener('click', function () {
+            visTitle.textContent = 'Envergadura por posición';
+            });
+
+            AlturavsEnvergaduraButton.addEventListener('click', function () {
+            visTitle.textContent = 'Altura v/s Envergadura por posición';
+            });
+
+            EnvergaduravsAlturaButton.addEventListener('click', function () {
+            visTitle.textContent = 'Envergadura v/s Altura por posición';
+            });
+        });
+        </script>
         </div>
-            <!-- Aquí se mostrará la visualización -->
-        </div>
-    </div>
+
+
 
     </div>
         <div class="divLine"></div>
