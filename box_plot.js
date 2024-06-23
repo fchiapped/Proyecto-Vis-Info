@@ -23,7 +23,7 @@ function drawBoxPlot(dataKey, svg) {
             .paddingOuter(0.5);
 
         const y = d3.scaleLinear()
-            .domain([d3.min(data, d => d.height), d3.max(data, d => d.wingspan)])
+            .domain([d3.min(data, d => +d.height), d3.max(data, d => +d.wingspan)])
             .nice()
             .range([height, 0]);
 
@@ -38,9 +38,9 @@ function drawBoxPlot(dataKey, svg) {
 
         // Eje Y
         svgGroup.append("g")
-            .call(d3.axisLeft(y))
+            .call(d3.axisLeft(y).tickFormat(d => `${d} mts.`))
             .selectAll("text")
-            .attr("class", "axis-label");
+            .attr("class", "axis-label")
 
         // Función para calcular estadísticas de cada grupo
         function calculateStats(d) {
@@ -161,11 +161,11 @@ function drawBoxPlot(dataKey, svg) {
                     <span style="font-weight: bold; color: black;">${dataKey === 'height' ? 'Altura' : 'Envergadura'}</span><br>
                     <hr>                    
                     Posición: ${d.position}<br>
-                    Q1: ${(stats.q1.toFixed(0)) / 100} mts.<br>
-                    Mediana: ${stats.median.toFixed(0) / 100} mts.<br>
-                    Q3: ${stats.q3.toFixed(0) / 100} mts.<br>
-                    Mínimo: ${stats.min.toFixed(0) / 100} mts.<br>
-                    Máximo: ${stats.max.toFixed(0) / 100} mts.<br>
+                    Q1: ${(stats.q1.toFixed(0))} mts.<br>
+                    Mediana: ${stats.median.toFixed(0)} mts.<br>
+                    Q3: ${stats.q3.toFixed(0)} mts.<br>
+                    Mínimo: ${stats.min.toFixed(0)} mts.<br>
+                    Máximo: ${stats.max.toFixed(0)} mts.<br>
                 `;
                 tooltip.html(tooltipText)
                     .style("visibility", "visible");
