@@ -28,7 +28,7 @@ function altura() {
         .paddingOuter(0.5);
 
     const y = d3.scaleLinear()
-        .domain([d3.min(data, d => d.height), d3.max(data, d => d.height)])
+        .domain([d3.min(data, d => d.height), d3.max(data, d => d.wingspan)])
         .nice()
         .range([height, 0]);
 
@@ -163,12 +163,14 @@ function altura() {
         // Mostrar tooltip al pasar el mouse sobre la caja
         const stats = d.stats;
         const tooltipText = `
+            <span style="font-weight: bold; color: black;">Altura</span><br>
+            <hr>          
             Posición: ${d.position}<br>
-            Q1: ${stats.q1.toFixed(2)}<br>
-            Mediana: ${stats.median.toFixed(2)}<br>
-            Q3: ${stats.q3.toFixed(2)}<br>
-            Mínimo: ${stats.min.toFixed(2)}<br>
-            Máximo: ${stats.max.toFixed(2)}<br>
+            Q1: ${(stats.q1.toFixed(0)) / 100} mts.<br>
+            Mediana: ${stats.median.toFixed(0) / 100} mts.<br>
+            Q3: ${stats.q3.toFixed(0) / 100} mts.<br>
+            Mínimo: ${stats.min.toFixed(0) / 100} mts.<br>
+            Máximo: ${stats.max.toFixed(0) / 100} mts.<br>
         `;
         tooltip.html(tooltipText)
             .style("visibility", "visible");
@@ -201,7 +203,8 @@ svg.selectAll(".outlier")
         // Ocultar tooltip al retirar el mouse del outlier
         tooltip.style("visibility", "hidden");
     });
-    return SVG1.node(); // Devolver el nodo SVG
+    return Promise.resolve(svg.node());
+
 });
 }
 
@@ -229,10 +232,24 @@ function wingspan() {
             .paddingOuter(0.5);
 
         const y = d3.scaleLinear()
-            .domain([d3.min(data, d => d.wingspan), d3.max(data, d => d.wingspan)])
+            .domain([d3.min(data, d => d.height), d3.max(data, d => d.wingspan)])
             .nice()
             .range([height, 0]);
 
+    // Eje X
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("class", "axis-label")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+
+    // Eje Y
+    svg.append("g")
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        .attr("class", "axis-label");
 
 
         // Función para calcular estadísticas de cada grupo
@@ -351,12 +368,14 @@ function wingspan() {
                 // Mostrar tooltip al pasar el mouse sobre la caja
                 const stats = d.stats;
                 const tooltipText = `
+                    <span style="font-weight: bold; color: black;">Envergadura</span><br>
+                    <hr>                    
                     Posición: ${d.position}<br>
-                    Q1: ${stats.q1.toFixed(2)}<br>
-                    Mediana: ${stats.median.toFixed(2)}<br>
-                    Q3: ${stats.q3.toFixed(2)}<br>
-                    Mínimo: ${stats.min.toFixed(2)}<br>
-                    Máximo: ${stats.max.toFixed(2)}<br>
+                    Q1: ${(stats.q1.toFixed(0)) / 100} mts.<br>
+                    Mediana: ${stats.median.toFixed(0) / 100} mts.<br>
+                    Q3: ${stats.q3.toFixed(0) / 100} mts.<br>
+                    Mínimo: ${stats.min.toFixed(0) / 100} mts.<br>
+                    Máximo: ${stats.max.toFixed(0) / 100} mts.<br>
                 `;
                 tooltip.html(tooltipText)
                     .style("visibility", "visible");
@@ -386,67 +405,40 @@ function wingspan() {
                     .style("left", (event.pageX + 10) + "px");
             })
             .on("mouseout", function() {
-                // Ocultar tooltip al retirar el mouse del outlier
                 tooltip.style("visibility", "hidden");
             });
-            return SVG2.node(); // Devolver el nodo SVG
-    });
+            return Promise.resolve(svg.node());    });
 }
 
-Promise.all([altura(), wingspan()]).then(function([svg1, svg2]) {
-    // Seleccionar el contenedor SVG existente en el DOM
+let alturaSVG, wingspanSVG;
+
+function renderSelectedSVG(selectedSVG, opacity) {
     const svgContainer = d3.select("#vis-3").select("svg");
 
-    // Agregar SVG1 a svgContainer usando foreignObject
-    svgContainer.append('foreignObject')
-        .attr('width', WIDHT)
-        .attr('height', HEIGHT)
-        .html(() => svg1.outerHTML); 
+    svgContainer.node().appendChild(selectedSVG);
 
-    // Agregar SVG2 a svgContainer usando foreignObject
-    svgContainer.append('foreignObject')
-        .attr('width', WIDHT)
-        .attr('height', HEIGHT)
-        .html(() => svg2.outerHTML);
-});
-function renderSelectedSVG(selectedSVG) {
-    const svgContainer = d3.select("#vis-3").select("svg");
-
-    svgContainer.selectAll("*").remove(); // Limpiar contenido existente
-
-    // Agregar SVG seleccionado al contenedor
-    svgContainer.node().appendChild(selectedSVG.svg.node());
-
-    // Ajustar opacidad según la selección
-    svgContainer.selectAll("svg")
-        .attr('opacity', selectedSVG.opacity);
+    d3.select(selectedSVG).style("opacity", opacity);
 }
 
-// Evento al cargar el documento
 document.addEventListener('DOMContentLoaded', function() {
-    // Crear botones de selección
-    const alturaButton = document.createElement('button');
-    alturaButton.textContent = 'Altura';
+    const alturaButton = document.getElementById('alturaButton');
+    const wingspanButton = document.getElementById('wingspanButton');
+
     alturaButton.addEventListener('click', function() {
-        createAlturaSVG().then(renderSelectedSVG);
+        renderSelectedSVG(alturaSVG, 1);
+        d3.select(wingspanSVG).style("opacity", 0.2);
     });
 
-    const wingspanButton = document.createElement('button');
-    wingspanButton.textContent = 'Envergadura';
     wingspanButton.addEventListener('click', function() {
-        createWingspanSVG().then(renderSelectedSVG);
+        renderSelectedSVG(wingspanSVG, 1);
+        d3.select(alturaSVG).style("opacity", 0.2);
     });
 
-    // Agregar botones al DOM
-    document.body.appendChild(alturaButton);
-    document.body.appendChild(wingspanButton);
-});
+    Promise.all([altura(), wingspan()]).then(function([svg1, svg2]) {
+        alturaSVG = svg1;
+        wingspanSVG = svg2;
 
-document.getElementById('alturaButton').addEventListener('click', function() {
-    console.log("alo")
-    updateVisualization('height');
-});
-
-document.getElementById('wingspanButton').addEventListener('click', function() {
-    updateVisualization('wingspan');
+        renderSelectedSVG(alturaSVG, 1);
+        d3.select(wingspanSVG).style("opacity", 0.2);
+    });
 });
