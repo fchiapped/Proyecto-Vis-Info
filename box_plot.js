@@ -203,23 +203,23 @@ function drawBoxPlot(dataKey, svg) {
 }
 
 function altura() {
-    const SVG1 = d3.create("svg")
+    const svg = d3.create("svg")
         .attr("width", WIDHT)
         .attr("height", HEIGHT);
-    return drawBoxPlot('height', SVG1);
+    return drawBoxPlot('height', svg);
 }
 
 function wingspan() {
-    const SVG2 = d3.create("svg")
+    const svg = d3.create("svg")
         .attr("width", WIDHT)
         .attr("height", HEIGHT);
-    return drawBoxPlot('wingspan', SVG2);
+    return drawBoxPlot('wingspan', svg);
 }
 
 let alturaSVG, wingspanSVG;
 
 function renderSelectedSVG(selectedSVG, opacity) {
-    const svgContainer = d3.select("#vis-3").select("svg");
+    const svgContainer = d3.select("#vis-1").select("svg");
 
     svgContainer.node().appendChild(selectedSVG);
 
