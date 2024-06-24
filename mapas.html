@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="box_plot.js"></script>
+    <script src="mapas.js"></script>
+    <title>NBA Combine</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Comparaciones NBA Combine</h1>
+        <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
+        <div>
+            <h4>1. Seleccionar característica a comparar</h4>
+            <button id="height">Altura</button>
+            <button id="wingspan">Envergadura</button>
+            <button id="widthHandInches">Tamaño Mano</button>
+        </div>
+        <ul id="legend" class="legend textStart">
+            <li id="legend-content-1">
+            </li>
+        </ul>
+        <div id="vis-1">
+        </div>
+    </div>
+
+    </div>
+        <div class="divLine"></div>
+        <h2>Visualización 2 - Visualización De los jugadores por el Mundo y las mejores estadísticas del COMBINE Por Pais</h2>
+        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
+            vs una persona promedio de la población general. Se puede comparar el salto vertical estatico, el salto
+            vertical máximo y las repeticiones en press de banca con 185 lbs(84Kg).</p>
+
+        <p> Aquí pensaba si podemos animar, tipo que la que se seleccione se mueva, onda una imagen del benchpres 
+            y que la de la barra sea aparte, para poder moverlo y así, con los salto usar png y hacer un suelo, pa solo mover el pngs
+        </p>
+        <div>
+            <h4>Selecionar Mundo o Estados Unidos</h4>
+            <button id="Mundo">Mundo</button>
+            <button id="EstadosUnidos">Estados Unidos</button> 
+            
+        </div>
+        <div id="vis-2">
+            <!-- Aquí se mostrará la visualización -->
+            <div id="map-container"></div>
+            <div id="legend-content"></div>
+        </div>
+        <script>vis1()</script>
+    </div>
+
+    
+</body>
+
+</html>
