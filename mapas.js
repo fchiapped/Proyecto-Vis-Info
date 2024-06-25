@@ -34,7 +34,7 @@ function vis1() {
         contenedorMapa.attr("transform", event.transform);
     }
     
-    // Cargar datos CSV del mundo(debido a que me tirba error fetch al carga tanto json como csv, subi los dato manual)
+    // Cargar datos CSV del mundo(debido a que me tirba error fetch al carga tanto json y csv, asi lo subi manualmente)
     const usaPlayersData_json ={
         
             "Kentucky": {
@@ -4466,7 +4466,7 @@ function vis1() {
                         const valorMaximo = atributos[atributo][1];
                         const jugadoresTexto = Array.isArray(jugadores) ? jugadores.join(", ") : jugadores;
 
-                        tooltipText += `<span style="font-weight: bold;">Estadistica: ${atributo}:</span> ${jugadoresTexto} (<span style="color: blue;">Valor Maximo:${valorMaximo}</span>)<br/>`;
+                        tooltipText += `<span style="font-weight: bold;">Estadistica: ${atributo}:</span> ${jugadoresTexto} (<span style="color: blue;">Record Nacional:${valorMaximo}</span>)<br/>`;
                     }
 
                     tooltip2.html(tooltipText); // Actualizar el contenido del div
@@ -4505,8 +4505,12 @@ function vis1() {
                 tooltip.style("opacity", 1);
             })
             .on("mouseout", function() {
-                tooltip.style("opacity", 0);
+                tooltip.transition() // Iniciar una transición
+                    .delay(5000) // Retraso de 5 segundos (5000 milisegundos)
+                    .duration(500) // Duración de la transición (opcional)
+                    .style("opacity", 0);
             });
+            
 
             
         
@@ -4560,7 +4564,7 @@ function vis1() {
                         const valorMaximo = atributos[atributo][1];
                         const jugadoresTexto = Array.isArray(jugadores) ? jugadores.join(", ") : jugadores;
 
-                        tooltipText += `<span style="font-weight: bold;">Estadistica: ${atributo}:</span> ${jugadoresTexto} (<span style="color: blue;">Valor Maximo:${valorMaximo}</span>)<br/>`;
+                        tooltipText += `<span style="font-weight: bold;">Estadistica: ${atributo}:</span> ${jugadoresTexto} (<span style="color: blue;">Record Esatatal:${valorMaximo}</span>)<br/>`;
                     }
 
                     tooltip3.html(tooltipText); // Actualizar el contenido del div
@@ -4599,8 +4603,12 @@ function vis1() {
                 tooltip.style("opacity", 1);
             })
             .on("mouseout", function() {
-                tooltip.style("opacity", 0);
+                tooltip.transition() // Iniciar una transición
+                    .delay(5000) // Retraso de 5 segundos (5000 milisegundos)
+                    .duration(500) // Duración de la transición (opcional)
+                    .style("opacity", 0);
             });
+            
         
         
         // Aplicar zoom y panning al mapa de Estados Unidos
@@ -4629,6 +4637,7 @@ function vis1() {
                 break;
         }
     }
+    
 
     // Event listeners para los botones (corregidos los IDs)
     document.getElementById('Mundo').addEventListener('click', function() {

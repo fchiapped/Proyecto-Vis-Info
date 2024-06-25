@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     /* Puedes cambiar el color de fondo (background-color) si lo deseas */
-    background-color: rgb(237, 203, 169);
+    background-color: rgb(255, 147, 139);
     max-width: 80%;
     min-width: 500px;
     text-align: center;
@@ -49,4 +49,39 @@ img{
     border: 1px solid;
     padding: 5px;
     font-weight: bolder;
+}
+#map-container {
+    width: 100%; /* Ancho completo del contenedor padre */
+    height: 500px; 
+    border: 5px solid #363636; /* Borde gris claro de 2px */
+    background-color: white; /* Fondo blanco */
+    margin: 20px auto; /* Centrar el contenedor con márgenes automáticos */
+    margin-right: 20px;
+}
+#legend-content { /* Estilos para el legend-content */
+    width: 30%;; /* Ancho fijo para el contenedor */
+    margin: 20px auto; /* Centrar el contenedor con márgenes automáticos */
+    padding: 15px; /* Espacio interno */
+    border: 2px solid #272626; /* Borde gris claro de 2px */
+    background-color: white; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+}
+#container {
+    display: flex; /* Habilita Flexbox */
+    flex-direction: row; /* Coloca los elementos en fila (horizontalmente) */
+}
+
+
+.button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px; /* Espacio entre botones */
+}
+
+.controls button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
 }
