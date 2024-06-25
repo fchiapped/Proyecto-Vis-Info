@@ -116,5 +116,5 @@ function createCirclePacking(csvFilePath, svgSelector) {
   }
   
   // Llamada a la función para crear la visualización
-  
+  createCirclePacking("draft_combine_train.csv", "myChart");
   
