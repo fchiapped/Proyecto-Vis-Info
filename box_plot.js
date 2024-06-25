@@ -1,7 +1,7 @@
 const WIDHT = 1000;
 const HEIGHT = 400;
 MARGIN = 50;
-TOP_MARGIN = 10;
+TOP_MARGIN = 25;
 
 function drawBoxPlot(dataKey, svg) {
     return d3.csv("DraftCombine.csv").then(function(data) {        
@@ -161,11 +161,11 @@ function drawBoxPlot(dataKey, svg) {
                     <span style="font-weight: bold; color: black;">${dataKey === 'height' ? 'Altura' : 'Envergadura'}</span><br>
                     <hr>                    
                     Posición: ${d.position}<br>
-                    Q1: ${(stats.q1.toFixed(0))} mts.<br>
-                    Mediana: ${stats.median.toFixed(0)} mts.<br>
-                    Q3: ${stats.q3.toFixed(0)} mts.<br>
-                    Mínimo: ${stats.min.toFixed(0)} mts.<br>
-                    Máximo: ${stats.max.toFixed(0)} mts.<br>
+                    Q1: ${(stats.q1.toFixed(2))} mts.<br>
+                    Mediana: ${stats.median.toFixed(2)} mts.<br>
+                    Q3: ${stats.q3.toFixed(2)} mts.<br>
+                    Mínimo: ${stats.min.toFixed(2)} mts.<br>
+                    Máximo: ${stats.max.toFixed(2)} mts.<br>
                 `;
                 tooltip.html(tooltipText)
                     .style("visibility", "visible");
