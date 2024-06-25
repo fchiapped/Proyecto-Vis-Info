@@ -7,100 +7,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="box_plot.js"></script>
     <title>NBA Combine</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Comparaciones NBA Combine</h1>
-        <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
-        <div>
-            <h4>1. Seleccionar característica a comparar</h4>
-            <button id="height">Altura</button>
-            <button id="wingspan">Envergadura</button>
-            <button id="widthHandInches">Tamaño Mano</button>
+        <h2 id="Title">Visualización 1 - Altura y Envergadura por posición</h2>
+        <div id="buttons-container">
+            <button id="alturaButton">Altura</button>
+            <button id="wingspanButton">Envergadura</button>
+            <button id="AlturavsEnvergadura">Altura v/s Envergadura</button>
+            <button id="EnvergaduravsAltura">Envergadura v/s Altura</button>
         </div>
-        <ul id="legend" class="legend textStart">
-            <li id="legend-content">
-            </li>
-        </ul>
+        <h2 id="BoxPlot">BoxPlot</h2>
+        <h2 id="visTitle">Altura por posición</h2>
         <div id="vis-1">
         </div>
-    </div>
-
-    </div>
-        <div class="divLine"></div>
-        <h2>Visualización 2 - Comparación Capacidades Físicas</h2>
-        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
-            vs una persona promedio de la población general. Se puede comparar el salto vertical estatico, el salto
-            vertical máximo y las repeticiones en press de banca con 185 lbs(84Kg).</p>
-
-        <p> Aquí pensaba si podemos animar, tipo que la que se seleccione se mueva, onda una imagen del benchpres 
-            y que la de la barra sea aparte, para poder moverlo y así, con los salto usar png y hacer un suelo, pa solo mover el pngs
-        </p>
-        <div>
-            <h4>Selecionar Prueba Física</h4>
-            <button id="BenchPress">Bench Press</button>
-            <button id="StandingVert">Standing Vert</button>
-            <button id="MaxVert">Max Vert</button>
         </div>
-        <div id="vis-2">
-            <!-- Aquí se mostrará la visualización -->
-        </div>
-    </div>
 
-    </div>
-        <div class="divLine"></div>
-        <h2>Visualización 3 - IMC NBACombine VS Mundo</h2>
-        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
-            vs una persona promedio de la población general en base al Indice de Masa Corporal(IMC)</p>
-
-        <div>
-            <h4>Seleccione un país</h4>
-            <select id="country-selector">
-                <option value=""></option>
-            </select>
-            <p id="imc-hombres"></p>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Papa.parse('IMC.csv', {
-                    download: true,
-                    header: true,
-                    complete: function(results) {
-                        const countries = results.data;
-                        const selector = document.getElementById('country-selector');
-                        const imcHombresDisplay = document.getElementById('imc-hombres');
+        document.addEventListener('DOMContentLoaded', function () {
+            const alturaButton = document.getElementById('alturaButton');
+            const wingspanButton = document.getElementById('wingspanButton');
+            const AlturavsEnvergaduraButton = document.getElementById('AlturavsEnvergadura');
+            const EnvergaduravsAlturaButton = document.getElementById('EnvergaduravsAltura');
+            const visTitle = document.getElementById('visTitle');
 
-                        countries.forEach(country => {
-                            const option = document.createElement('option');
-                            option.value = country.pais;
-                            option.textContent = country.pais;
-                            option.setAttribute('data-imc-hombres', country.IMC_hombres);
-                            selector.appendChild(option);
-                        });
-
-                        selector.addEventListener('change', function() {
-                            const selectedOption = selector.options[selector.selectedIndex];
-                            const imcHombres = selectedOption.getAttribute('data-imc-hombres');
-                            imcHombresDisplay.textContent = imcHombres ? `IMC Promedio de ${selectedOption.textContent}: ${imcHombres}` : '';
-                        });
-                    }
-                });
+            alturaButton.addEventListener('click', function () {
+            visTitle.textContent = 'Altura por posición';
             });
-        </script>
 
-        </div>
-        <div id="vis-3">
-            <!-- Aquí se mostrará la visualización -->
+            wingspanButton.addEventListener('click', function () {
+            visTitle.textContent = 'Envergadura por posición';
+            });
+
+            AlturavsEnvergaduraButton.addEventListener('click', function () {
+            visTitle.textContent = 'Altura v/s Envergadura por posición';
+            });
+
+            EnvergaduravsAlturaButton.addEventListener('click', function () {
+            visTitle.textContent = 'Envergadura v/s Altura por posición';
+            });
+        });
+        </script>
         </div>
     </div>
+    <div class="divLine"></div>
+    <h2>Visualización 2 - Visualización De los jugadores por el Mundo y por estado en EEUU.</h2>
+    <div>
+        <h4>Selecionar Mundo o Estados Unidos</h4>
+        <button id="Mundo">Mundo</button>
+        <button id="EstadosUnidos">Estados Unidos</button> 
+        
+    </div>
+    <div id="vis-2">
+        <!-- Aquí se mostrará la visualización -->
+        <div id="container">
+            <div id="map-container"></div>
+            <div id="legend-content"></div>
+        </div>
+        
+    </div>
+    <script>vis2()</script>
 
+    <div class="container">
+        <div></div>
+    <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
+    <div>
+        <h4>Nodo</h4>
+        <button id="Estadistica Usa">Estadistica Usa</button>
+        <button id="Estadistica Mundo">Estadistica Mundo</button>
+        
+    </div>
 
-
+    <svg id="myChart" width="960" height="600"></svg>
+    <script>createCirclePacking("draft_combine_train.csv", "#myChart")</script>
+    
     <div class="divLine"></div>
     <script src="main.js"></script>
+</div>
 </body>
 
 </html>

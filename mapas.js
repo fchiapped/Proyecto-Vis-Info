@@ -1,4 +1,4 @@
-function vis1() {
+function vis2() {
     const width_mapa = 960;
     const height_mapa = 500;
 

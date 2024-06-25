@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://d3js.org/d3.v7.js"></script>
     <script src="box_plot.js"></script>
+    <script src="mapas.js"></script>
+    <script src=nodo.js ></script>
+
     <title>NBA Combine</title>
 </head>
 
@@ -54,55 +57,34 @@
         </script>
         </div>
 
-
-
-    </div>
         <div class="divLine"></div>
-        <h2>Visualización 3 - IMC NBACombine VS Mundo</h2>
-        <p>En esta visualización, está disponible la comparación del promedio de los jugadores en su NBACombine
-            vs una persona promedio de la población general en base al Indice de Masa Corporal(IMC)</p>
-
+        <h2>Visualización 2 - Visualización De los jugadores por el Mundo y por estado en EEUU.</h2>
         <div>
-            <h4>Seleccione un país</h4>
-            <select id="country-selector">
-            </select>
-            <p id="imc-hombres"></p>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Papa.parse('IMC.csv', {
-                    download: true,
-                    header: true,
-                    complete: function(results) {
-                        const countries = results.data;
-                        const selector = document.getElementById('country-selector');
-                        const imcHombresDisplay = document.getElementById('imc-hombres');
-
-                        countries.forEach(country => {
-                            const option = document.createElement('option');
-                            option.value = country.País;
-                            option.textContent = country.País;
-                            option.setAttribute('data-imc-hombres', country.IMC_Hombres);
-                            selector.appendChild(option);
-                        });
-
-                        selector.addEventListener('change', function() {
-                            const selectedOption = selector.options[selector.selectedIndex];
-                            const imcHombres = selectedOption.getAttribute('data-imc-hombres');
-                            imcHombresDisplay.textContent = imcHombres ? `IMC Promedio de ${selectedOption.textContent}: ${imcHombres}` : '';
-                        });
-                    }
-                });
-            });
-        </script>
-
+            <h4>Selecionar Mundo o Estados Unidos</h4>
+            <button id="Mundo">Mundo</button>
+            <button id="EstadosUnidos">Estados Unidos</button> 
+            
         </div>
+        <div id="vis-2">
             <!-- Aquí se mostrará la visualización -->
+            <div id="container">
+                <div id="map-container"></div>
+                <div id="legend-content"></div>
+            </div>
+            
+        <script>vis2()</script>
+
+        <div></div>
+        <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
+        <div>
+            <h4>Nodo</h4>
+            <button id="Estadistica Usa">Estadistica Usa</button>
+            <button id="Estadistica Mundo">Estadistica Mundo</button>
+            
         </div>
-    </div>
 
-
+        <svg id="myChart" width="960" height="600"></svg>
+        <script>createCirclePacking("draft_combine_train.csv", "#myChart")</script>
 
     <div class="divLine"></div>
     <script src="main.js"></script>
