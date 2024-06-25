@@ -85,3 +85,7 @@ img{
 .controls button:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el ratón */
 }
+#myChart {
+    border: 1px solid black;
+  }
+  

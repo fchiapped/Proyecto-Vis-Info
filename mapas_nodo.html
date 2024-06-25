@@ -9,6 +9,7 @@
     <script src="https://d3js.org/d3.v7.js"></script>
     <script src="box_plot.js"></script>
     <script src="mapas.js"></script>
+    <script src=nodo.js ></script>
     <title>NBA Combine</title>
 </head>
 
@@ -17,18 +18,14 @@
         <h1>Comparaciones NBA Combine</h1>
         <h2>Visualización 1 - Altura, Envergadura y Tamaño de mano</h2>
         <div>
-            <h4>1. Seleccionar característica a comparar</h4>
+            <h4>Nodo</h4>
             <button id="Estadistica Usa">Estadistica Usa</button>
             <button id="Estadistica Mundo">Estadistica Mundo</button>
             
         </div>
-        <ul id="legend" class="legend textStart">
-            <li id="legend-content-1">
-            </li>
-        </ul>
-        <div id="vis-1">
-        </div>
-        <script>vis1()</script>
+
+        <svg id="myChart" width="960" height="600"></svg>
+        <script>createCirclePacking("draft_combine_train.csv", "#myChart")</script>
     </div>
 
     </div>
